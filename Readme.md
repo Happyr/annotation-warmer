@@ -30,7 +30,7 @@ happyr_annotation_warmer:
 
 ```
 
-## Annotation lint
+## Linting annotations
 
 To make sure your annotations are properly configured you may run the lint command: 
 

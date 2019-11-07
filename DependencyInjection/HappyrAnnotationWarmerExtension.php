@@ -35,7 +35,6 @@ class HappyrAnnotationWarmerExtension extends Extension
 
         $classes = [];
         foreach ($finder as $file) {
-
         }
         $this->addAnnotatedClassesToCompile($classes);
     }

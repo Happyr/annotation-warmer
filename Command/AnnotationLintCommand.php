@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Happyr\AnnotationWarmer\Command;
 
+use Doctrine\Common\Annotations\AnnotationException;
 use Happyr\AnnotationWarmer\Service\AnnotationValidator;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputInterface;
@@ -32,7 +33,6 @@ final class AnnotationLintCommand extends Command
         return ['lint:annotation'];
     }
 
-
     protected function configure()
     {
         $this->setHelp('Lint all annotations in paths specified in happyr_annotation_warmer.paths');
@@ -41,6 +41,7 @@ final class AnnotationLintCommand extends Command
     protected function execute(InputInterface $input, OutputInterface $output)
     {
         $style = new SymfonyStyle($input, $output);
+        /** @var AnnotationException[] $errors */
         $errors = $this->validator->validateClasses($this->classes);
         if (empty($errors)) {
             $style->success('Everything is fine');
@@ -48,9 +49,11 @@ final class AnnotationLintCommand extends Command
             return;
         }
 
-        $style->error('Found some issues: ');
+        $style->error(sprintf('Found %d issues.', count($errors)));
         foreach ($errors as $error) {
-            $style->error($error);
+            $style->error($error->getMessage());
         }
+
+        return 1;
     }
 }

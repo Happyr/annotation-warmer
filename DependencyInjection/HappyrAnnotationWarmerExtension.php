@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace  Happyr\AnnotationWarmer\DependencyInjection;
 
 use Composer\Autoload\ClassLoader;
-use Happyr\AnnotationWarmer\AnnotationLintCommand;
+use Happyr\AnnotationWarmer\Command\AnnotationLintCommand;
 use Symfony\Component\Config\FileLocator;
 use Symfony\Component\Debug\DebugClassLoader;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
@@ -58,11 +58,12 @@ class HappyrAnnotationWarmerExtension extends Extension
             ->in($path);
 
         foreach ($finder as $file) {
-            $filePath = substr($file->getRealpath(), $basePathLength+1, -4);
+            $filePath = substr($file->getRealpath(), $basePathLength + 1, -4);
             $fqns = $basePrefix.str_replace('/', '\\', $filePath);
 
             $classes[] = $fqns;
         }
+
         return $classes;
     }
 

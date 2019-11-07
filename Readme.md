@@ -45,4 +45,4 @@ bin/console lint:annotations
 
 ## Limitations
 
-We are only preloading annotations for Serializer and Validation component.
+We are only warming cache for annotations to the Serializer and Validation component.

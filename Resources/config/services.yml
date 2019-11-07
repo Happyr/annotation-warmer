@@ -1,0 +1,5 @@
+services:
+    Happyr\AnnotationWarmer\Service\AnnotationValidator:
+        arguments:
+            - '@annotations.reader'
+            - [] # [Classes]

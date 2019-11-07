@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace  Happyr\AnnotationWarmer\DependencyInjection;
 
 use Composer\Autoload\ClassLoader;
-use Happyr\AnnotationWarmer\Command\AnnotationLintCommand;
+use Happyr\AnnotationWarmer\Service\AnnotationManager;
 use Symfony\Component\Config\FileLocator;
 use Symfony\Component\Debug\DebugClassLoader;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
@@ -45,8 +45,8 @@ class HappyrAnnotationWarmerExtension extends Extension
         }
 
         $this->addAnnotatedClassesToCompile($classes);
-        $container->getDefinition(AnnotationLintCommand::class)
-            ->replaceArgument(1, $classes);
+        $container->getDefinition(AnnotationManager::class)
+            ->replaceArgument(0, $classes);
     }
 
     private function getClassesInPath($path, $basePath, $basePrefix)

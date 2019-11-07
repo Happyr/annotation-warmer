@@ -3,9 +3,21 @@ services:
         arguments:
             - '@annotations.reader'
 
+    Happyr\AnnotationWarmer\Service\AnnotationManager:
+        arguments:
+            - [] # [Classes]
+
+    Happyr\AnnotationWarmer\Loader\FakeSerializerLoader:
+        arguments:
+            - '@Happyr\AnnotationWarmer\Service\AnnotationManager'
+
+    Happyr\AnnotationWarmer\Loader\FakeValidatorLoader:
+        arguments:
+            - '@Happyr\AnnotationWarmer\Service\AnnotationManager'
+
     Happyr\AnnotationWarmer\Command\AnnotationLintCommand:
         arguments:
             - '@Happyr\AnnotationWarmer\Service\AnnotationValidator'
-            - [] # [Classes]
+            - '@Happyr\AnnotationWarmer\Service\AnnotationManager'
         tags:
             - { name: 'console.command', command: 'lint:annotations' }

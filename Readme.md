@@ -42,3 +42,7 @@ bin/console lint:annotations
 
 We assume that the classes in the specified paths are using PSR-4. We also assume
 that all *.php classes in the path has a class which is the same as the filename. 
+
+## Limitations
+
+We are only preloading annotations for Serializer and Validation component.

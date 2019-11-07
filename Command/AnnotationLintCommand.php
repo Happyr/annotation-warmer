@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Happyr\AnnotationWarmer\Command;
 
 use Doctrine\Common\Annotations\AnnotationException;
+use Happyr\AnnotationWarmer\Service\AnnotationManager;
 use Happyr\AnnotationWarmer\Service\AnnotationValidator;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputInterface;
@@ -19,13 +20,13 @@ final class AnnotationLintCommand extends Command
     protected static $defaultName = 'lint:annotations';
 
     private $validator;
-    private $classes;
+    private $manager;
 
-    public function __construct(AnnotationValidator $validator, array $classes)
+    public function __construct(AnnotationValidator $validator, AnnotationManager $manager)
     {
         parent::__construct();
         $this->validator = $validator;
-        $this->classes = $classes;
+        $this->manager = $manager;
     }
 
     public function getAliases()
@@ -42,7 +43,7 @@ final class AnnotationLintCommand extends Command
     {
         $style = new SymfonyStyle($input, $output);
         /** @var AnnotationException[] $errors */
-        $errors = $this->validator->validateClasses($this->classes);
+        $errors = $this->validator->validateClasses($this->manager->getAllClasses());
         if (empty($errors)) {
             $style->success('Everything is fine');
 

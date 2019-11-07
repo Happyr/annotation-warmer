@@ -14,7 +14,7 @@ We also provide a command to validate that all annotations are properly loaded.
 
 ## Install
 
-```
+```cli
 composer require happyr/annotation-warmer
 ```
 
@@ -22,7 +22,7 @@ composer require happyr/annotation-warmer
 
 We warm upp all classes in `src` automatically. You may configure different paths if you like:
 
-```
+```yaml
 happyr_annotation_warmer:
     paths:
         - '%kernel.project_dir%/src/Message/Command'

@@ -40,8 +40,8 @@ bin/console lint:annotations
 
 ## Assumptions
 
-We assume that the classes in the specified paths are using PSR-4. We also assume
-that all *.php classes in the path has a class which is the same as the filename. 
+* We assume that the classes in the specified paths are using PSR-4. 
+* We also assume that all `*.php` files in the path has a class with the same as the filename. 
 
 ## Limitations
 

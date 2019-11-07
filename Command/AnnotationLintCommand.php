@@ -46,7 +46,7 @@ final class AnnotationLintCommand extends Command
         if (empty($errors)) {
             $style->success('Everything is fine');
 
-            return;
+            return 0;
         }
 
         $style->error(sprintf('Found %d issues.', count($errors)));

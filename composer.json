@@ -1,7 +1,7 @@
 {
     "name": "happyr/annotation-warmer",
     "description": "Warms up your annotation cache",
-    "type": "library",
+    "type": "symfony-bundle",
     "license": "MIT",
     "authors": [
         {

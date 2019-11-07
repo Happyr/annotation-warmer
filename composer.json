@@ -1,0 +1,27 @@
+{
+    "name": "happyr/annotation-warmer",
+    "description": "Warms up your annotation cache",
+    "type": "library",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Tobias Nyholm",
+            "email": "tobias.nyholm@gmail.com"
+        }
+    ],
+    "require": {
+        "symfony/framework-bundle": "^3.4 || ^4.0 || ^5.0"
+    },
+    "require-dev": {
+    },
+    "autoload": {
+        "psr-4": {
+            "Happyr\\AnnotationWarmer\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Tests\\Happyr\\AnnotationWarmer\\": "tests/"
+        }
+    }
+}

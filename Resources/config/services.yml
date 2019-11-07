@@ -2,4 +2,10 @@ services:
     Happyr\AnnotationWarmer\Service\AnnotationValidator:
         arguments:
             - '@annotations.reader'
+
+    Happyr\AnnotationWarmer\Command\AnnotationLintCommand:
+        arguments:
+            - '@Happyr\AnnotationWarmer\Service\AnnotationValidator'
             - [] # [Classes]
+        tags:
+            - { name: 'console.command', command: 'lint:annotations' }

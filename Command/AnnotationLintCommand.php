@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Happyr\AnnotationWarmer;
+namespace Happyr\AnnotationWarmer\Command;
 
 use Happyr\AnnotationWarmer\Service\AnnotationValidator;
 use Symfony\Component\Console\Command\Command;
@@ -26,6 +26,12 @@ final class AnnotationLintCommand extends Command
         $this->validator = $validator;
         $this->classes = $classes;
     }
+
+    public function getAliases()
+    {
+        return ['lint:annotation'];
+    }
+
 
     protected function configure()
     {

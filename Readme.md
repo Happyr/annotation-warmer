@@ -20,7 +20,7 @@ composer require happyr/annotation-warmer
 
 ## Use
 
-We warm upp all classes in `src` automatically. You may configure different paths if you like:
+We warm upp all classes in `src` by default. You may use a different configuration of paths if you like:
 
 ```yaml
 happyr_annotation_warmer:
@@ -38,3 +38,7 @@ To make sure your annotations are properly configured you may run the lint comma
 bin/console lint:annotations
 ```
 
+## Assumptions
+
+We assume that the classes in the specified paths are using PSR-4. We also assume
+that all *.php classes in the path has a class which is the same as the filename. 

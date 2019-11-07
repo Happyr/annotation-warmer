@@ -23,7 +23,7 @@
     },
     "autoload-dev": {
         "psr-4": {
-            "Tests\\Happyr\\AnnotationWarmer\\": "tests/"
+            "Tests\\Happyr\\AnnotationWarmer\\": "Tests/"
         }
     }
 }

@@ -27,7 +27,7 @@ class HappyrAnnotationWarmerExtension extends Extension
         $loader->load('services.yml');
 
         if (empty($config['paths'])) {
-            $config['paths'] = ['%kernel.project_dir%/src'];
+            $config['paths'] = [];
         }
 
         $paths = $container->getParameterBag()->resolveValue($config['paths']);

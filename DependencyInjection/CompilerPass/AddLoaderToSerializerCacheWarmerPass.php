@@ -18,6 +18,10 @@ final class AddLoaderToSerializerCacheWarmerPass implements CompilerPassInterfac
 {
     public function process(ContainerBuilder $container)
     {
+        if (!$container->hasDefinition('serializer.mapping.cache_warmer')) {
+            return;
+        };
+
         $definition = $container->getDefinition('serializer.mapping.cache_warmer');
         $argument = $definition->getArgument(0);
         /** @var Definition $argumentDefinition */
